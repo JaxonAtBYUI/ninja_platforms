@@ -1,0 +1,13 @@
+{
+    "(255, 255, 255, 255)" : false,
+    "(0, 0, 0, 255)" : "assets/wall.png",
+    "(167, 167, 167, 255)" : "assets/concrete.png",
+    "(144, 144, 144, 255)" : "assets/concrete_top.png",
+    "(180, 180, 180, 255)" : "assets/concrete_left.png",
+    "(208, 208, 208, 255)" : "assets/concrete_right.png",
+    "(70, 70, 70, 255)" : "assets/concrete_top_right.png",
+    "(43, 43, 43, 255)" : "assets/concrete_top_left.png",
+    "(255, 0, 0, 255)" : false,
+    "(255, 0, 255, 255)" : false,
+    "(255, 255, 0, 255)" : false
+}
