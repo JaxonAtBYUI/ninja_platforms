@@ -14,7 +14,7 @@ Abilities:
 
 This is a simple platforming game written in python using the pygame library. I created this to explore object oriented programmig, as well as increase my knowledge of game physics and collisions. I focused heavily on encapsulation. I also focused on clarity. I broke the code out into many simple functions. I did this to make the code clear enough that minimal comments were necessary to explain what was happening when looking at a function. I also experimented with extreme modularity, allowing everything from solids, to new levels to be added easily. Levels are created by drawing an image of the level in an image editor and then having the code read the image to generate the level. In this way I sought to increase the speed at which you would be able to expand the game.
 
-[Software Demo Video](http://youtube.link.goes.here)
+[Demo Video](https://youtu.be/xkPZQuC9az4)
 
 # Development Environment
 
