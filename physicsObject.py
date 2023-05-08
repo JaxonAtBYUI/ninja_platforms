@@ -1,13 +1,34 @@
 import pygame
 import object
 
+"""
+PHYSICS OBJECT
+
+A special type of object. This object obeys the rules of physics as defined in the room,
+and being able to move. Inherets from the OBJECT class.
+
+Attributes:
+ - x_velocity: The velocity in the x direction
+ - y_velocity: The velocity in the y direction
+
+Methods:
+ - step: Handles the movement of the object. This means handling the change in position as well as
+         handling collision events.
+ - apply_force: Applies a force to the object via adding to the velocity of the object in a given direction
+ - apply_multiplier: Applies a multiplier to the player's velocity. Use described below.
+ - check_collision: Checks to see if the object is currently colliding with any other object.
+ - increment: Handles collision with solid objects via incrementally moving to where the two objects meet.
+
+"""
+
+
 class PhysicsObject(object.Object):
 
     def __init__(self, x, y, w, h, image):
         super().__init__(x, y, w, h, image)
         # Physics variables
-        self.y_velocity = 0.0
         self.x_velocity = 0.0
+        self.y_velocity = 0.0
 
     def step(self):
         
@@ -72,28 +93,37 @@ class PhysicsObject(object.Object):
         return collisions
 
     def increment(self, translation_x, translation_y):
+        # Get the starting position
         x = self.rect.x
         y = self.rect.y
 
+        # Get the direction being traveled in.
         if translation_x: tx_sign = translation_x / abs(translation_x)
         if translation_y: ty_sign = translation_y / abs(translation_y)
 
+        # Get the end point
         end_x = x + translation_x
         end_y = y + translation_y
 
+        # While not touching the other object
         x_complete = False
         y_complete = False
         while not x_complete and not y_complete:
 
+            # Increment in the x direction until one of the following is met:
+            #   1. You have reached the end point in the x direction without a collision.
+            #   2. You have collided with an object on your way to the endpoint.
             if translation_x and not x_complete:
                 self.rect.move_ip(1 * tx_sign, 0)
 
                 if self.check_collision() != []:
+                    # Back out of object and report that you have collided.
                     self.rect.move_ip(-1 * tx_sign, 0)
                     x_complete = True
                 elif self.rect.x == end_x:
                     x_complete = True
 
+            # The same loop for the x direction but in the y direction.
             if translation_y and not y_complete:
                 self.rect.move_ip(0, 1 * ty_sign)
 

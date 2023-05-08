@@ -6,6 +6,32 @@ import player
 import death
 import goal
 
+"""
+ROOM
+
+An object which contains the enviornment of the game. It keeps track of and runs
+all objects within it. 
+
+Attributes:
+ - gravity: The strength of gravity in the room. Used by physics objects.
+ - objects: An array of all objects within the room.
+ - spawn_point: Player object specific. Records the start position of the player.
+ - drag: The 'air friction' within the room. Controls how quickly objects slow down.
+ - friction: The standard amount of 'friction' between physics objects within the room.
+ - screen: The pygame display surface.
+ - background: The background image of the room.
+ - cam: The camera that the room calls to draw all objects.
+
+Methods:
+ - create_object: Takes an object and adds it to the object array, therby creating it within the room.
+ - destroy_objects: Takes a specific object in the room, and removes it from the object array.
+ - step: Gets the inputs from the user and runs the step event for all objects in the room.
+ - draw: Fills the room background with a color then calls the camera to draw the background and objects.
+ - generate_room: Creates all the objects in a room based on an image file that has been loaded.
+
+"""
+
+
 class Room():
     
     def __init__(self):

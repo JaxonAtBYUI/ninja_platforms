@@ -1,5 +1,24 @@
 import pygame
 
+"""
+CAMERA
+
+A class that controls the camera of the game. All display functions are run through this object.
+
+Attributes:
+ - x: The x position of the camera
+ - y: The y position of the camera 
+ - width: The width of the widow
+ - height: The height of the window
+ - screen: The display surface the game is drawn
+
+ Methods:
+  - update_position: Moves the camera to a new positions centered on the point given.
+  - draw_object: Draws an image on the screen relative to position of the camera inside of the room.
+  - draw_background: Draws the background witha paralax effect
+"""
+
+
 class Camera():
 
     def __init__(self):

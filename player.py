@@ -1,15 +1,31 @@
 import pygame
 import physicsObject
 
+"""
+PLAYER
+
+A special type of physics object. It is what the player controls on the screen.
+
+Attributes:
+ - max_jumps: The maximum times a player can jump before meeting the criteria to be able to jump again.
+ - jumps: The remaining jumps the player has.
+
+Methods:
+ - step: Makes checks on the state of the player and the inputs, and applies forces accordingly.
+ - destroy: When "destroyed" reset the player to the starting location of the ROOM.
+ - user_inputs: Checks for specific inputs by the player, and applies forces accordingly.
+ - replenish_jumps: Checks to see if the player meets the conditions for reseting their jumps.
+ - wall_cling: Checks if the player is against a wall and is attempting to cling to it. If so, apply forces.
+ - wall_jump: While the player is wall clinging, if they jump, push up and away from wall.
+
+"""
+
 class Player(physicsObject.PhysicsObject):
 
     def __init__(self, x, y, w, h, image="assets/ninja.png"):
         super().__init__(x, y, w, h, image)
         self.max_jumps = 2
         self.jumps = 2
-
-    def create(self):
-        pass
 
     def step(self):
         
@@ -24,7 +40,6 @@ class Player(physicsObject.PhysicsObject):
         self.rect.x, self.rect.y = self.room.spawn_point
         # self.x_velocity, self.y_velocity = 0.0, 0.0
         
-
     def user_inputs(self):
         if self.room.keys[pygame.K_d]:
             self.apply_force((1, 0))
