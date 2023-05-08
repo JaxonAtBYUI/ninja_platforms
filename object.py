@@ -30,7 +30,7 @@ class Object(pygame.sprite.Sprite):
     def __init__(self, x, y, w, h, image="assets/error.png"):
         # self.room is set by room.py
         self.rect = pygame.Rect(x, y, w, h)
-        self.image = pygame.image.load(image).convert()
+        self.image = pygame.image.load(image)
         self.create()
 
     def step(self):
